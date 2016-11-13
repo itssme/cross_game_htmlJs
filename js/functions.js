@@ -10,13 +10,21 @@ miner_define[1] = [0,0.5,25];
 miner_define[2] = [0,1,50];
 miner_define[3] = [0,5,100];
 miner_define[4] = [0,25,500];
+miner_define[5] = [0,50,750];
 
-var unlocks = Array(2);
+var unlocks = Array(6);
 
 for (i = 0; i < unlocks.length ; i++) {
     unlocks[i] = false;
     
     
+}
+
+var multip_array = Array(3);
+
+for (i = 0; i < multip_array.length ; i++) {
+    multip_array[i] = false;
+        
 }
 
 var cross_per_turn = 0;
@@ -62,7 +70,7 @@ function unlock(miner_id, cost, remo_id) {
         document.getElementById("user_money").innerHTML = courrent_counter_money;
         document.getElementById(remo_id).remove();
         
-        if (check_unlocks()) {
+        if (check_array(unlocks)) {
             document.getElementById("unlock_true").innerHTML = "Nothing to buy anymore";
             
         }
@@ -71,15 +79,16 @@ function unlock(miner_id, cost, remo_id) {
 }
 
 
-function multip_add(change, cost, remo_id) {
+function multip_add(change, cost, remo_id,id) {
     if (cost <= courrent_counter_money) {
         multip = change;
         courrent_counter_money -= cost;
+        multip_array[id] = true;
         
         document.getElementById("user_money").innerHTML = courrent_counter_money;
         document.getElementById(remo_id).remove();
-        
-        if (remo_id == "multip_0") {
+                
+        if (check_array(multip_array)) {
             document.getElementById("multip_true").innerHTML = "Nothing to buy anymore";
             
         }
@@ -89,9 +98,9 @@ function multip_add(change, cost, remo_id) {
 }
 
 
-function check_unlocks() {
-    for (i = 0; i < unlocks.length ; i++) {
-        if (unlocks[i] == false) {
+function check_array(array) {
+    for (i = 0; i < array.length ; i++) {
+        if (array[i] == false) {
             return false;        
         }
     }
