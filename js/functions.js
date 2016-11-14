@@ -1,26 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 var miner_define = [];
-miner_define[0] = [0,0.1,10]; // 0 anzahl, 0.1 cross per turn, kosten
-miner_define[1] = [0,0.5,25];
-miner_define[2] = [0,1,50];
-miner_define[3] = [0,5,100];
-miner_define[4] = [0,25,500];
-miner_define[5] = [0,50,750];
+miner_define[0] = [0,0.05,10]; // 0 quantity, 0.1 cross per turn, 10 cost
+miner_define[1] = [0,0.25,50];
+miner_define[2] = [0,1,100];
+miner_define[3] = [0,5,400];
+miner_define[4] = [0,25,2500];
+miner_define[5] = [0,100,10000];
+miner_define[6] = [0,250,25000];
 
-var unlocks = Array(6);
+var unlocks = Array(7);
 
 for (i = 0; i < unlocks.length ; i++) {
-    unlocks[i] = false;
-    
-    
+    unlocks[i] = false;    
 }
 
-var multip_array = Array(3);
+var multip_array = Array(4);
 
 for (i = 0; i < multip_array.length ; i++) {
     multip_array[i] = false;
@@ -51,7 +44,7 @@ function add(miner_id,buy_all) {
 
 function over_line() {
     counter += (1 * multip) ;
-    courrent_counter_money += 1;
+    courrent_counter_money += (1 * multip);
     
     courrent_counter_money = parseFloat(courrent_counter_money.toFixed(4));
     counter = parseFloat(counter.toFixed(4));
@@ -72,7 +65,6 @@ function unlock(miner_id, cost, remo_id) {
         
         if (check_array(unlocks)) {
             document.getElementById("unlock_true").innerHTML = "Nothing to buy anymore";
-            
         }
     
     }
